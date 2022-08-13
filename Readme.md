@@ -72,4 +72,6 @@ https://cgvr.cs.uni-bremen.de/teaching/cg_literatur/Cube_map_tutorial/cube_map.h
 
 The source code of Gavin Bell's implementation is still available at the above website.
 
+http://simonrodriguez.fr/dragon/
 
+There is a camera class in the Metal version.
