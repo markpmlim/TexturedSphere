@@ -6,7 +6,7 @@ The main purpose of this project is not the process of texturing a sphere but to
 
 The following types in the APPLMath Utilities is type-defined to those in the simd library:
 
-```c
+```objective-c
     vector_float3 - simd_float3
 
     matrix_float4x4 - simd_float4x4
@@ -27,7 +27,7 @@ The implementation of the Virtual Camera of this project is based on a number of
 
 There are 2 Objective-C methods which are called continously during a mouse drag and are critical to the operation of the virtual camera.
 
-```c
+```objective-c
     rotationBetweenVector:andVector:
 
 
@@ -63,6 +63,7 @@ https://www.xarg.org/proof/quaternion-from-two-vectors/
 https://www.khronos.org/opengl/wiki/Texturing_a_Sphere
 
 http://www.diku.dk/forskning/image/trackballs/
+
 "Virtual Trackballs Revisited" by Knud Henriksen, Jon Sporring, and Kasper Hornbæk
 
 https://cgvr.cs.uni-bremen.de/teaching/cg_literatur/Cube_map_tutorial/cube_map.html
