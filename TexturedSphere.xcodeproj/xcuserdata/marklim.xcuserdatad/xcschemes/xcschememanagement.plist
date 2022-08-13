@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Cubemapping2-iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Cubemapping2-macOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>TextureSphere-iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>TextureSphere-macOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>EE7910542836764E0024F64A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE79106A283676660024F64A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE9E826B2835E90D00F011F4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE9E82812835E92200F011F4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEBDACCB2835A2EB00ECF4C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEBDACE12835A37000ECF4C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEBDACF92835A40600ECF4C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

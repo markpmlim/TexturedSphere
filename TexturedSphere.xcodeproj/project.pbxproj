@@ -1,0 +1,594 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE12E9A82877EB9200228AEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE12E9A72877EB9200228AEC /* main.m */; };
+		EE12E9A92877EBA900228AEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE12E9A72877EB9200228AEC /* main.m */; };
+		EE35FD352835E65700376A81 /* EquiRectImage.hdr in Resources */ = {isa = PBXBuildFile; fileRef = EE822BE72835DF73003736EA /* EquiRectImage.hdr */; };
+		EE41DF6328783BD100B6FBDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9E82842835E92200F011F4 /* AppDelegate.m */; };
+		EE7309582878589D00BD146E /* MetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7309562878589D00BD146E /* MetalViewController.m */; };
+		EE7309592878589D00BD146E /* MetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7309562878589D00BD146E /* MetalViewController.m */; };
+		EE73095C2878591600BD146E /* MetalRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE73095B2878591600BD146E /* MetalRenderer.m */; };
+		EE73095D2878591600BD146E /* MetalRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE73095B2878591600BD146E /* MetalRenderer.m */; };
+		EE822BF72835E1AD003736EA /* AAPLMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC774792835A5CB00CEE656 /* AAPLMathUtilities.m */; };
+		EE822BF82835E1BD003736EA /* MTKTextureLoader+HDR.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC7747D2835A5CB00CEE656 /* MTKTextureLoader+HDR.m */; };
+		EE98049E2883E2740027803B /* BoxMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EE98049C2883E2730027803B /* BoxMesh.m */; };
+		EE98049F2883E2740027803B /* BoxMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EE98049C2883E2730027803B /* BoxMesh.m */; };
+		EE9C72F12877A04A003A0ED7 /* EquiRectImage.hdr in Resources */ = {isa = PBXBuildFile; fileRef = EE822BE72835DF73003736EA /* EquiRectImage.hdr */; };
+		EE9E828A2835E92200F011F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9E82882835E92200F011F4 /* Main.storyboard */; };
+		EE9E828C2835E92300F011F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE9E828B2835E92300F011F4 /* Assets.xcassets */; };
+		EE9E828F2835E92300F011F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9E828D2835E92300F011F4 /* LaunchScreen.storyboard */; };
+		EE9E82B82835F9CF00F011F4 /* AAPLMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC774792835A5CB00CEE656 /* AAPLMathUtilities.m */; };
+		EE9E82B92835F9D200F011F4 /* MTKTextureLoader+HDR.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC7747D2835A5CB00CEE656 /* MTKTextureLoader+HDR.m */; };
+		EEAB8FA3288113DE004DD982 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB8FA2288113DE004DD982 /* Mesh.m */; };
+		EEAB8FA728811DEC004DD982 /* SphereMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB8FA628811DEC004DD982 /* SphereMesh.m */; };
+		EEAB8FA828811DEC004DD982 /* SphereMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB8FA628811DEC004DD982 /* SphereMesh.m */; };
+		EEAB8FA928811E13004DD982 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB8FA2288113DE004DD982 /* Mesh.m */; };
+		EEB374132891FC1900162FBE /* VirtualCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB374112891FC1900162FBE /* VirtualCamera.m */; };
+		EEB374142891FC1900162FBE /* VirtualCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB374112891FC1900162FBE /* VirtualCamera.m */; };
+		EEBDACFD2835A40600ECF4C0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEBDACFC2835A40600ECF4C0 /* AppDelegate.m */; };
+		EEBDAD012835A40600ECF4C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEBDAD002835A40600ECF4C0 /* Assets.xcassets */; };
+		EEBDAD042835A40600ECF4C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBDAD022835A40600ECF4C0 /* Main.storyboard */; };
+		EEFC49E92878D6E90032F0D5 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EEFC49E82878D6E90032F0D5 /* Shaders.metal */; };
+		EEFC49EA2878D6E90032F0D5 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = EEFC49E82878D6E90032F0D5 /* Shaders.metal */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EE12E9A62877E8C800228AEC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EE12E9A72877EB9200228AEC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EE41DF6228783B3700B6FBDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EE7309562878589D00BD146E /* MetalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetalViewController.m; sourceTree = "<group>"; };
+		EE7309572878589D00BD146E /* MetalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalViewController.h; sourceTree = "<group>"; };
+		EE73095A2878591600BD146E /* MetalRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalRenderer.h; sourceTree = "<group>"; };
+		EE73095B2878591600BD146E /* MetalRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetalRenderer.m; sourceTree = "<group>"; };
+		EE822BE72835DF73003736EA /* EquiRectImage.hdr */ = {isa = PBXFileReference; lastKnownFileType = file; path = EquiRectImage.hdr; sourceTree = "<group>"; };
+		EE98049C2883E2730027803B /* BoxMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxMesh.m; sourceTree = "<group>"; };
+		EE98049D2883E2740027803B /* BoxMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxMesh.h; sourceTree = "<group>"; };
+		EE9E82822835E92200F011F4 /* TexturedSphere-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TexturedSphere-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE9E82842835E92200F011F4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EE9E82892835E92200F011F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE9E828B2835E92300F011F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE9E828E2835E92300F011F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE9E82902835E92300F011F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEAB8FA2288113DE004DD982 /* Mesh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mesh.m; sourceTree = "<group>"; };
+		EEAB8FA428811402004DD982 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		EEAB8FA528811DEC004DD982 /* SphereMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SphereMesh.h; sourceTree = "<group>"; };
+		EEAB8FA628811DEC004DD982 /* SphereMesh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SphereMesh.m; sourceTree = "<group>"; };
+		EEB374112891FC1900162FBE /* VirtualCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualCamera.m; sourceTree = "<group>"; };
+		EEB374122891FC1900162FBE /* VirtualCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualCamera.h; sourceTree = "<group>"; };
+		EEBDACFA2835A40600ECF4C0 /* TextureSphere-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TextureSphere-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEBDACFC2835A40600ECF4C0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EEBDAD002835A40600ECF4C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EEBDAD032835A40600ECF4C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EEBDAD052835A40600ECF4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEC010F72836690D00F5D915 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; wrapsLines = 1; };
+		EEC774792835A5CB00CEE656 /* AAPLMathUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPLMathUtilities.m; sourceTree = "<group>"; };
+		EEC7747A2835A5CB00CEE656 /* AAPLMathUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLMathUtilities.h; sourceTree = "<group>"; };
+		EEC7747B2835A5CB00CEE656 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		EEC7747D2835A5CB00CEE656 /* MTKTextureLoader+HDR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MTKTextureLoader+HDR.m"; sourceTree = "<group>"; };
+		EEC7747F2835A5CB00CEE656 /* MTKTextureLoader+HDR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MTKTextureLoader+HDR.h"; sourceTree = "<group>"; };
+		EEFB88562887503000C8A03A /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		EEFC49E82878D6E90032F0D5 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.metal; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE9E827F2835E92200F011F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEBDACF72835A40600ECF4C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE822BD92835DF03003736EA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EE822BDA2835DF23003736EA /* HDR */,
+				EE822BDB2835DF2D003736EA /* PNG */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		EE822BDA2835DF23003736EA /* HDR */ = {
+			isa = PBXGroup;
+			children = (
+				EE822BE72835DF73003736EA /* EquiRectImage.hdr */,
+			);
+			path = HDR;
+			sourceTree = "<group>";
+		};
+		EE822BDB2835DF2D003736EA /* PNG */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PNG;
+			sourceTree = "<group>";
+		};
+		EE9E82B22835F6EB00F011F4 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				EE73095A2878591600BD146E /* MetalRenderer.h */,
+				EE73095B2878591600BD146E /* MetalRenderer.m */,
+				EE7309572878589D00BD146E /* MetalViewController.h */,
+				EE7309562878589D00BD146E /* MetalViewController.m */,
+				EEFC49E82878D6E90032F0D5 /* Shaders.metal */,
+				EEFB88562887503000C8A03A /* ShaderTypes.h */,
+				EE9E82B32835F6F600F011F4 /* iOS */,
+				EE9E82B42835F6FE00F011F4 /* macOS */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		EE9E82B32835F6F600F011F4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EE41DF6228783B3700B6FBDE /* AppDelegate.h */,
+				EE9E82842835E92200F011F4 /* AppDelegate.m */,
+				EE9E828B2835E92300F011F4 /* Assets.xcassets */,
+				EE9E82882835E92200F011F4 /* Main.storyboard */,
+				EE9E828D2835E92300F011F4 /* LaunchScreen.storyboard */,
+				EE9E82902835E92300F011F4 /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		EE9E82B42835F6FE00F011F4 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				EEBDAD022835A40600ECF4C0 /* Main.storyboard */,
+				EE12E9A62877E8C800228AEC /* AppDelegate.h */,
+				EEBDACFC2835A40600ECF4C0 /* AppDelegate.m */,
+				EEBDAD002835A40600ECF4C0 /* Assets.xcassets */,
+				EEBDAD052835A40600ECF4C0 /* Info.plist */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		EEBDACC32835A2EB00ECF4C0 = {
+			isa = PBXGroup;
+			children = (
+				EEC010F72836690D00F5D915 /* Readme.md */,
+				EEC774772835A5A300CEE656 /* Common */,
+				EE822BD92835DF03003736EA /* Images */,
+				EEBDACFB2835A40600ECF4C0 /* TexturedSphere */,
+				EEBDACCD2835A2EB00ECF4C0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EEBDACCD2835A2EB00ECF4C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEBDACFA2835A40600ECF4C0 /* TextureSphere-macOS.app */,
+				EE9E82822835E92200F011F4 /* TexturedSphere-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EEBDACFB2835A40600ECF4C0 /* TexturedSphere */ = {
+			isa = PBXGroup;
+			children = (
+				EE9E82B22835F6EB00F011F4 /* Application */,
+			);
+			path = TexturedSphere;
+			sourceTree = "<group>";
+		};
+		EEC774772835A5A300CEE656 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EEC7747A2835A5CB00CEE656 /* AAPLMathUtilities.h */,
+				EEC774792835A5CB00CEE656 /* AAPLMathUtilities.m */,
+				EE12E9A72877EB9200228AEC /* main.m */,
+				EEAB8FA2288113DE004DD982 /* Mesh.m */,
+				EEAB8FA428811402004DD982 /* Mesh.h */,
+				EEC7747B2835A5CB00CEE656 /* stb_image.h */,
+				EEC7747F2835A5CB00CEE656 /* MTKTextureLoader+HDR.h */,
+				EEC7747D2835A5CB00CEE656 /* MTKTextureLoader+HDR.m */,
+				EE98049D2883E2740027803B /* BoxMesh.h */,
+				EE98049C2883E2730027803B /* BoxMesh.m */,
+				EEAB8FA528811DEC004DD982 /* SphereMesh.h */,
+				EEAB8FA628811DEC004DD982 /* SphereMesh.m */,
+				EEB374122891FC1900162FBE /* VirtualCamera.h */,
+				EEB374112891FC1900162FBE /* VirtualCamera.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE9E82812835E92200F011F4 /* TexturedSphere-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE9E82912835E92300F011F4 /* Build configuration list for PBXNativeTarget "TexturedSphere-iOS" */;
+			buildPhases = (
+				EE9E827E2835E92200F011F4 /* Sources */,
+				EE9E827F2835E92200F011F4 /* Frameworks */,
+				EE9E82802835E92200F011F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TexturedSphere-iOS";
+			productName = "Texture2D-iOS";
+			productReference = EE9E82822835E92200F011F4 /* TexturedSphere-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EEBDACF92835A40600ECF4C0 /* TextureSphere-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEBDAD062835A40600ECF4C0 /* Build configuration list for PBXNativeTarget "TextureSphere-macOS" */;
+			buildPhases = (
+				EEBDACF62835A40600ECF4C0 /* Sources */,
+				EEBDACF72835A40600ECF4C0 /* Frameworks */,
+				EEBDACF82835A40600ECF4C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TextureSphere-macOS";
+			productName = Texture2D;
+			productReference = EEBDACFA2835A40600ECF4C0 /* TextureSphere-macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EEBDACC42835A2EB00ECF4C0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "mark lim pak mun";
+				TargetAttributes = {
+					EE9E82812835E92200F011F4 = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+					};
+					EEBDACF92835A40600ECF4C0 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EEBDACC72835A2EB00ECF4C0 /* Build configuration list for PBXProject "TexturedSphere" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = EEBDACC32835A2EB00ECF4C0;
+			productRefGroup = EEBDACCD2835A2EB00ECF4C0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE9E82812835E92200F011F4 /* TexturedSphere-iOS */,
+				EEBDACF92835A40600ECF4C0 /* TextureSphere-macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE9E82802835E92200F011F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE9C72F12877A04A003A0ED7 /* EquiRectImage.hdr in Resources */,
+				EE9E828F2835E92300F011F4 /* LaunchScreen.storyboard in Resources */,
+				EE9E828A2835E92200F011F4 /* Main.storyboard in Resources */,
+				EE9E828C2835E92300F011F4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEBDACF82835A40600ECF4C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEBDAD012835A40600ECF4C0 /* Assets.xcassets in Resources */,
+				EEBDAD042835A40600ECF4C0 /* Main.storyboard in Resources */,
+				EE35FD352835E65700376A81 /* EquiRectImage.hdr in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE9E827E2835E92200F011F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE9E82B82835F9CF00F011F4 /* AAPLMathUtilities.m in Sources */,
+				EE41DF6328783BD100B6FBDE /* AppDelegate.m in Sources */,
+				EE98049E2883E2740027803B /* BoxMesh.m in Sources */,
+				EEAB8FA728811DEC004DD982 /* SphereMesh.m in Sources */,
+				EE73095C2878591600BD146E /* MetalRenderer.m in Sources */,
+				EE7309582878589D00BD146E /* MetalViewController.m in Sources */,
+				EE12E9A82877EB9200228AEC /* main.m in Sources */,
+				EE9E82B92835F9D200F011F4 /* MTKTextureLoader+HDR.m in Sources */,
+				EEAB8FA3288113DE004DD982 /* Mesh.m in Sources */,
+				EEB374132891FC1900162FBE /* VirtualCamera.m in Sources */,
+				EEFC49E92878D6E90032F0D5 /* Shaders.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEBDACF62835A40600ECF4C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE73095D2878591600BD146E /* MetalRenderer.m in Sources */,
+				EE7309592878589D00BD146E /* MetalViewController.m in Sources */,
+				EEBDACFD2835A40600ECF4C0 /* AppDelegate.m in Sources */,
+				EE12E9A92877EBA900228AEC /* main.m in Sources */,
+				EE822BF72835E1AD003736EA /* AAPLMathUtilities.m in Sources */,
+				EEFC49EA2878D6E90032F0D5 /* Shaders.metal in Sources */,
+				EEAB8FA928811E13004DD982 /* Mesh.m in Sources */,
+				EE98049F2883E2740027803B /* BoxMesh.m in Sources */,
+				EEAB8FA828811DEC004DD982 /* SphereMesh.m in Sources */,
+				EE822BF82835E1BD003736EA /* MTKTextureLoader+HDR.m in Sources */,
+				EEB374142891FC1900162FBE /* VirtualCamera.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EE9E82882835E92200F011F4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE9E82892835E92200F011F4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EE9E828D2835E92300F011F4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE9E828E2835E92300F011F4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EEBDAD022835A40600ECF4C0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EEBDAD032835A40600ECF4C0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE9E82922835E92300F011F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TexturedSphere/Application/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Incremental-Innovation.TexturedSphere-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE9E82932835E92300F011F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TexturedSphere/Application/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Incremental-Innovation.TexturedSphere-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EEBDACD92835A2EC00ECF4C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EEBDACDA2835A2EC00ECF4C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		EEBDAD072835A40600ECF4C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				INFOPLIST_FILE = TexturedSphere/Application/macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.incrementalinnovation.TexturedSphere-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		EEBDAD082835A40600ECF4C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				INFOPLIST_FILE = TexturedSphere/Application/macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.incrementalinnovation.TexturedSphere-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE9E82912835E92300F011F4 /* Build configuration list for PBXNativeTarget "TexturedSphere-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE9E82922835E92300F011F4 /* Debug */,
+				EE9E82932835E92300F011F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEBDACC72835A2EB00ECF4C0 /* Build configuration list for PBXProject "TexturedSphere" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEBDACD92835A2EC00ECF4C0 /* Debug */,
+				EEBDACDA2835A2EC00ECF4C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEBDAD062835A40600ECF4C0 /* Build configuration list for PBXNativeTarget "TextureSphere-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEBDAD072835A40600ECF4C0 /* Debug */,
+				EEBDAD082835A40600ECF4C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EEBDACC42835A2EB00ECF4C0 /* Project object */;
+}
