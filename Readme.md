@@ -6,17 +6,17 @@ The main purpose of this project is not the process of texturing a sphere but to
 
 The following types in the APPLMath Utilities is type-defined to those in the simd library:
 
-```c
+```objc
     vector_float3 - simd_float3
 ```
 
-```c
+```objc
 matrix_float4x4 - simd_float4x4
 ```
 
 However, Apple's Metal Shading Language has no-built quaternion type. We have to use the simd function:
 
-```c
+```objc
     simd_float4x4 simd_matrix4x4(simd_quatf q)
 ```
 
@@ -36,7 +36,7 @@ There are 2 Objective-C methods which are called continously during a mouse drag
     -(vector_float3) projectMouseX:andY:
 ```
 
-The first method will return a normalized rotation quaternion (unit quaternion) while the second method takes a pair of mouse coordinates and project it onto a virtual sphere of radius 1.0.
+The first method will return a normalized rotation quaternion (unit quaternion) while the second method takes a pair of mouse coordinates and projects them onto a virtual sphere of radius 1.0 and returns a 3D point.
 
 
 <br />
