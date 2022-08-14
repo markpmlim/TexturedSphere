@@ -40,7 +40,7 @@ The first method will return a normalized rotation quaternion (unit quaternion) 
 <br />
 <br />
 
-![screenshot](TexturedSphere.png)
+![](TexturedSphere.png)
 
 <br />
 <br />
