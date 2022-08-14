@@ -37,7 +37,10 @@ There are 2 Objective-C methods which are called continously during a mouse drag
 ```
 
 The first method will return a normalized rotation quaternion (unit quaternion) while the second method takes a pair of mouse coordinates and projects them onto a virtual sphere of radius 1.0 and returns a 3D point.
+<br />
+<br />
 
+![screenshot](TexturedSphere.png)
 
 <br />
 <br />
