@@ -67,8 +67,6 @@ https://www.xarg.org/proof/quaternion-from-two-vectors/
 
 https://www.khronos.org/opengl/wiki/Texturing_a_Sphere
 
-http://www.diku.dk/forskning/image/trackballs/
-
 "Virtual Trackballs Revisited" by Knud Henriksen, Jon Sporring, and Kasper Hornbæk
 
 https://cgvr.cs.uni-bremen.de/teaching/cg_literatur/Cube_map_tutorial/cube_map.html
