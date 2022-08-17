@@ -46,6 +46,9 @@ The first method will return a normalized rotation quaternion (unit quaternion) 
 <br />
 <br />
 
+Bug fix to the pinchGestureDidRecognize method.
+<br />
+<br />
 
 **Requirements:** XCode 9.x and macOS 10.13+ or later iOS 12+
 <br />
