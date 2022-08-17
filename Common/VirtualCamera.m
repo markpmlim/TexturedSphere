@@ -37,7 +37,6 @@
         _eye = vector_make(0.0f, 0.0f, -3.0f);
         _target = vector_make(0.0f, 0.0f, 0.0f);
         _up =  vector_make(0.0f, 1.0f, 0.0f);
-        [self updateViewMatrix];
 
         // Initialise to a quaternion identity.
         _orientation  = simd_quaternion(0.0f, 0.0f, 0.0f, 1.0f);
@@ -85,10 +84,14 @@
         return simd_quaternion(radians_from_degrees(180.0f), rotationAxis);
     }
 
-    // Compute rotation axis.
+    // Compute rotation axis which is perpendicular to the plane of u and v.
     rotationAxis = simd_cross(u, v);
+    // The "rotationAxis" is not a unit vector even though u and v
+    //  are unit vectors.
     rotationAxis = simd_normalize(rotationAxis);
-
+    // Normalising the "rotationAxis" and using it to instantiate a
+    //  quaternion will be produce a unit quaternion (magnitude 1.0)
+    //  which is a rotation quaternion.
     simd_quatf q = simd_quaternion(acosf(cosTheta), rotationAxis);
     return q;
 }
@@ -175,6 +178,7 @@
 // Response to a mouse down.
 - (void) startDraggingFromPoint:(CGPoint)point {
     self.dragging = YES;
+    // The origin of the view is at the lower bottom corner.
     float mouseX = (2*point.x - _screenSize.width)/_screenSize.width;
     float mouseY = (2*point.y - _screenSize.height)/_screenSize.height;
     _startPoint = [self projectMouseX:mouseX
