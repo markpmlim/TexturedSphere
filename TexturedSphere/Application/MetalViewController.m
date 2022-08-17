@@ -1,8 +1,8 @@
 /*
  MetalViewController.m
- TexturedSphere
  
- Created by Mark Lim Pak Mun on 13/08/2022.
+ 
+ Created by Mark Lim Pak Mun on 12/07/2022.
  Copyright © 2022 mark lim pak mun. All rights reserved.
 
  */
@@ -16,6 +16,20 @@
     MTKView *_view;
 
     MetalRenderer *_renderer;
+
+    CGPoint _previousMousePoint;
+    CGPoint _currentMousePoint;
+
+    vector_float3 _startPoint;
+    vector_float3 _endPoint;
+
+    simd_quatf _currentQuat;
+    simd_quatf _previousQuat;
+    
+#if TARGET_OS_IOS 
+    UIPanGestureRecognizer *_panGesture;
+    UIPinchGestureRecognizer *_pinchGesture;
+#endif
 }
 
 - (void)viewDidLoad {
@@ -46,14 +60,20 @@ drawableSizeWillChange:_view.drawableSize];
     _view.delegate = _renderer;
 
 #if TARGET_OS_IOS
-    UIGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                              action:@selector(panGestureDidRecognize:)];
-    [self.view addGestureRecognizer:panGesture];
+   _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                            action:@selector(panGestureDidRecognize:)];
+    [self.view addGestureRecognizer:_panGesture];
 
-    UIGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self
-                                                                                  action:@selector(pinchGestureDidRecognize:)];
-    [self.view addGestureRecognizer:pinchGesture];
+    _pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self
+                                                              action:@selector(pinchGestureDidRecognize:)];
+    [self.view addGestureRecognizer:_pinchGesture];
+#endif
+}
 
+- (void) dealloc {
+#if TARGET_OS_IOS
+    [self.view removeGestureRecognizer:_panGesture];
+    [self.view removeGestureRecognizer:_pinchGesture];
 #endif
 }
 
@@ -67,50 +87,51 @@ drawableSizeWillChange:_view.drawableSize];
 }
 
 
+
+
 // location in window has origin at bottom left.
 - (void) mouseDown:(NSEvent *)event {
     NSPoint mouseLocation = [self.view convertPoint:event.locationInWindow
                                            fromView:nil];
-    [_renderer.camera startMove:mouseLocation];
+    [_renderer.camera startDraggingFromPoint:mouseLocation];
 
 }
 
 - (void) mouseDragged:(NSEvent *)event {
     NSPoint mouseLocation = [self.view convertPoint:event.locationInWindow
                                            fromView:nil];
-    if (_renderer.camera.isMoving) {
-        [_renderer.camera moveToPoint:mouseLocation];
+    if (_renderer.camera.isDragging) {
+        [_renderer.camera dragToPoint:mouseLocation];
     }
 }
 
 - (void) mouseUp:(NSEvent *)event {
     NSPoint mouseLocation = [self.view convertPoint:event.locationInWindow
                                            fromView:nil];
-    [_renderer.camera endMove];
+    [_renderer.camera endDrag];
 
 }
 
 // We can move most of the code to the VirtualCamera class
 - (void)scrollWheel:(NSEvent *)event {
-    CGFloat dz = event.scrollingDeltaY;
-    [_renderer.camera scroll:dz];
+    float dz = event.scrollingDeltaY;
+    [_renderer.camera zoomInOrOut:dz];
  }
-
 #else
 
 - (void) panGestureDidRecognize:(UIPanGestureRecognizer *)gesture {
     CGPoint location = [gesture locationInView:self.view];
     switch(gesture.state) {
         case UIGestureRecognizerStateBegan:
-            [_renderer.camera startMove:location];
+            [_renderer.camera startDraggingFromPoint:location];
             break;
         case UIGestureRecognizerStateChanged:
-            if (_renderer.camera.isMoving) {
-                [_renderer.camera moveToPoint:location];
+            if (_renderer.camera.isDragging) {
+                [_renderer.camera dragToPoint:location];
             }
             break;
         case UIGestureRecognizerStateEnded:
-            [_renderer.camera endMove];
+            [_renderer.camera endDrag];
             break;
         default:
             break;
@@ -120,19 +141,14 @@ drawableSizeWillChange:_view.drawableSize];
 }
 
 - (void) pinchGestureDidRecognize:(UIPinchGestureRecognizer *)gesture {
-    CGFloat dz;
-    switch(gesture.state)
-    {
-        case UIGestureRecognizerStateChanged:
-            dz = 1.0 / gesture.scale;
-            if (gesture.velocity < 0) {
-                dz = -dz;
-            }
-            [_renderer.camera scroll:dz];
-            break;
-        default:
-            break;
+    static float previousScale = 1.0;
+    float dz = (gesture.scale - previousScale) * 15.0;
+    [_renderer.camera zoomInOrOut:dz];
+    previousScale = gesture.scale;
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        previousScale = 1.0;
     }
 }
 #endif
 @end
+
