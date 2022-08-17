@@ -2,24 +2,25 @@
 //  VirtualCamera.m
 //  TexturedSphere
 //
-//  Created by Mark Lim Pak Mun on 13/08/2022.
+//  Created by Mark Lim Pak Mun on 30/07/2022.
 //  Copyright © 2022 mark lim pak mun. All rights reserved.
 //
 
 #import "VirtualCamera.h"
 
 @implementation VirtualCamera {
-    simd_quatf _orientation;
     matrix_float4x4 _viewMatrix;
+    simd_quatf _orientation;
+    vector_float3 _eulerAngles;
+    float _sphereRadius;
+    CGSize _screenSize;
 
     // Use to compute the viewmatrix
     vector_float3 _eye;
     vector_float3 _target;
     vector_float3 _up;
 
-    float _sphereRadius;
-    CGSize _screenSize;
-    BOOL _moving;
+    BOOL _dragging;
     vector_float3 _startPoint;
     vector_float3 _endPoint;
     simd_quatf _previousQuat;
@@ -36,6 +37,7 @@
         _eye = vector_make(0.0f, 0.0f, -3.0f);
         _target = vector_make(0.0f, 0.0f, 0.0f);
         _up =  vector_make(0.0f, 1.0f, 0.0f);
+        [self updateViewMatrix];
 
         // Initialise to a quaternion identity.
         _orientation  = simd_quaternion(0.0f, 0.0f, 0.0f, 1.0f);
@@ -48,23 +50,15 @@
     return self;
 }
 
-// Position of camera wrt to the centre of the scene.
 - (void) setPosition:(vector_float3)position {
     _eye = position;
     [self updateViewMatrix];
 }
 
-/*
- The simd library function simd_quaternion(from, to) can be used to
-  compute the rotation quaternion. But this function can only compute
-  accurately if the angle between the 2 vectors is less than 90 degrees.
-
- This function can accept an angle of rotation of > 90 degrees
-  between the 2 vectors.
-
- Returns a rotation quaternion such that q*u = v
- Tutorial 17 RotationBetweenVectors quaternion_utils.cpp
- */
+// The simd library function simd_quaternion(from, to) will compute
+//  correctly if the angle between the 2 vectors is less than 90 degrees.
+// Returns a rotation quaternion such that q*u = v
+// Tutorial 17 RotationBetweenVectors quaternion_utils.cpp
 -(simd_quatf) rotationBetweenVector:(vector_float3)from
                           andVector:(vector_float3)to {
 
@@ -74,7 +68,8 @@
     // Angle between the 2 vectors
     float cosTheta = simd_dot(u, v);
     vector_float3 rotationAxis;
-
+    //float angle = acosf(cosTheta);
+    //printf("angle:%f\n", degrees_from_radians(angle));
     if (cosTheta < -1 + 0.001f) {
         // Special case when vectors in opposite directions:
         //  there is no "ideal" rotation axis.
@@ -90,17 +85,14 @@
         return simd_quaternion(radians_from_degrees(180.0f), rotationAxis);
     }
 
-    // Compute the rotation axis.
+    // Compute rotation axis.
     rotationAxis = simd_cross(u, v);
-    // Note: even though u and v are unit vectors, the magnitude of the
-    //  vector "rotationAxis" is not likely to be 1.0 because the
-    //  vectors u and v are not orthogonal.
     rotationAxis = simd_normalize(rotationAxis);
-    // A unit quaternion is produced if the axis is normalised.
-    // It can be used for applying a rotation to a 3D coordinate.
+
     simd_quatf q = simd_quaternion(acosf(cosTheta), rotationAxis);
     return q;
 }
+
 
 
 -(void) updateViewMatrix {
@@ -108,6 +100,7 @@
     _viewMatrix = matrix_look_at_left_hand(_eye,
                                            _target,
                                            _up);
+    
 }
 
 - (void) update:(float)duration {
@@ -115,7 +108,7 @@
     [self updateViewMatrix];
 }
 
-// Handle resize of the view.
+// Handle resize.
 - (void) resizeWithSize:(CGSize)newSize {
     _screenSize = newSize;
 }
@@ -180,11 +173,8 @@
 // Handle mouse interactions.
 
 // Response to a mouse down.
-- (void) startMove:(CGPoint)point {
-    self.moving = YES;
-    // The origin of a metal view is at the left bottom corner.
-    // Remap so that the origin is at the centre of the view and
-    //  the mouse coordinates (x,y) are in the range [-1.0, 1.0]
+- (void) startDraggingFromPoint:(CGPoint)point {
+    self.dragging = YES;
     float mouseX = (2*point.x - _screenSize.width)/_screenSize.width;
     float mouseY = (2*point.y - _screenSize.height)/_screenSize.height;
     _startPoint = [self projectMouseX:mouseX
@@ -194,31 +184,29 @@
 }
 
 // Respond to a mouse dragged
-- (void) moveToPoint:(CGPoint)point {
+- (void) dragToPoint:(CGPoint)point {
     float mouseX = (2*point.x - _screenSize.width)/_screenSize.width;
     float mouseY = (2*point.y - _screenSize.height)/_screenSize.height;
     _endPoint = [self projectMouseX:mouseX
                                andY:mouseY];
     simd_quatf delta = [self rotationBetweenVector:_startPoint
                                          andVector:_endPoint];
-
-   // Rotate the quaternion "_previousQuat" by the quaternion "delta".
     _currentQuat = simd_mul(delta, _previousQuat);
 }
 
 // Response to a mouse up
-- (void) endMove {
-    self.moving = NO;
+- (void) endDrag {
+    self.dragging = NO;
     _previousQuat = _currentQuat;
     _orientation = _currentQuat;
 }
 
 // Assume only a mouse with 1 scroll wheel.
-- (void) scroll:(float)amount {
-    static float mouseSensitivity = 0.1;
+- (void) zoomInOrOut:(float)amount {
+    static float kmouseSensitivity = 0.1;
     vector_float3 pos = _eye;
-    // Metal adopts the left hand rule with +z direction into the screen.
-    float z = pos.z - amount*mouseSensitivity;
+    // Metal follows the left hand rule with +z direction into the screen.
+    float z = pos.z + amount*kmouseSensitivity;
     if (z <= -8.0f)
         z = -8.0f;
     else if (z >= -3.0f)
