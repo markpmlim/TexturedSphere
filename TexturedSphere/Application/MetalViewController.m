@@ -140,12 +140,22 @@ drawableSizeWillChange:_view.drawableSize];
                      inView:self.view];
 }
 
+/*
+ The "scale" property of UIPinchGestureRecognizer object is the distance between
+  the 2 fingers of the pinch gesture.
+ At the start of every pinch gesture, the var "previousScale" is set/reset to 1.0
+ Refer: Apple's documentation "Handling Pinch Gestures"
+ */
+
 - (void) pinchGestureDidRecognize:(UIPinchGestureRecognizer *)gesture {
     static float previousScale = 1.0;
-    float dz = (gesture.scale - previousScale) * 15.0;
+    static float arbitraryValue = 15.0;
+    // Use the difference (positive/negative) to do a zoom in/zoom out.
+    float dz = (gesture.scale - previousScale) * arbitraryValue;
     [_renderer.camera zoomInOrOut:dz];
     previousScale = gesture.scale;
     if (gesture.state == UIGestureRecognizerStateEnded) {
+        // Reset for the start of the next pinch gesture.
         previousScale = 1.0;
     }
 }
