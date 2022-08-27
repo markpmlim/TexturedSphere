@@ -117,8 +117,8 @@
 }
 
 /*
- Project the mouse coords on to a sphere of radius 1.0 units.
- Returns the 3D projected point on a sphere.
+ Project the mouse coords on to a hemisphere of radius 1.0 units.
+ Returns the 3D projected point on a hemisphere.
  */
 - (vector_float3) projectMouseX:(float)x
                            andY:(float)y {
@@ -127,7 +127,7 @@
     float d = x*x + y*y;
     float rr = _sphereRadius * _sphereRadius;
     if(d <= (0.5f * rr)) {
-        // Inside the sphere. Compute the z-coord using the function:
+        // Inside the hemisphere. Compute the z-coord using the function:
         //      z = sqrt(r^2 - (x^2 + y^2))
         point.z = sqrtf(rr - d);
     }
@@ -138,7 +138,7 @@
         point.z = 0.5f * rr / sqrtf(d);
 
     /*
-         Scale x and y down, so the projected 3D position can be on the sphere.
+         Scale x and y down, so the projected 3D position can be on the hemisphere.
          If the equation of a sphere is:
                 r^2 = x^2 + y^2 + z^2
          with its centre at (0,0,0), then
