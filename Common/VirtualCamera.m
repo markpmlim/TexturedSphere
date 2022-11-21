@@ -92,7 +92,8 @@
     // Normalising the "rotationAxis" and using it to instantiate a
     //  quaternion will be produce a unit quaternion (magnitude 1.0)
     //  which is a rotation quaternion.
-    simd_quatf q = simd_quaternion(acosf(cosTheta), rotationAxis);
+    // Note: there is a "-" sign before the angle.
+    simd_quatf q = simd_quaternion(-acosf(cosTheta), rotationAxis);
     return q;
 }
 
