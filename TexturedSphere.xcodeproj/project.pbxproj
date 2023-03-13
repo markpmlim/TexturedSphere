@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				EE822BDA2835DF23003736EA /* HDR */,
-				EE822BDB2835DF2D003736EA /* PNG */,
+				EEE6226D29BC3B8A001E4415 /* PNG */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -109,13 +109,6 @@
 				EE822BE72835DF73003736EA /* EquiRectImage.hdr */,
 			);
 			path = HDR;
-			sourceTree = "<group>";
-		};
-		EE822BDB2835DF2D003736EA /* PNG */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PNG;
 			sourceTree = "<group>";
 		};
 		EE9E82B22835F6EB00F011F4 /* Application */ = {
@@ -205,6 +198,13 @@
 				EEB374112891FC1900162FBE /* VirtualCamera.m */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		EEE6226D29BC3B8A001E4415 /* PNG */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PNG;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
