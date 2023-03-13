@@ -8,10 +8,15 @@
 
 #import "VirtualCamera.h"
 
-@implementation VirtualCamera {
+@implementation VirtualCamera
+{
+@public
     matrix_float4x4 _viewMatrix;
     simd_quatf _orientation;
-    vector_float3 _eulerAngles;
+    BOOL _dragging;
+
+@private
+    // These are private
     float _sphereRadius;
     CGSize _screenSize;
 
@@ -20,14 +25,14 @@
     vector_float3 _target;
     vector_float3 _up;
 
-    BOOL _dragging;
     vector_float3 _startPoint;
     vector_float3 _endPoint;
     simd_quatf _previousQuat;
     simd_quatf _currentQuat;
 }
 
-- (instancetype) initWithScreenSize:(CGSize)size {
+- (instancetype)initWithScreenSize:(CGSize)size
+{
     self = [super init];
     if (self != nil) {
         _screenSize = size;
@@ -37,6 +42,7 @@
         _eye = vector_make(0.0f, 0.0f, -3.0f);
         _target = vector_make(0.0f, 0.0f, 0.0f);
         _up =  vector_make(0.0f, 1.0f, 0.0f);
+        [self updateViewMatrix];
 
         // Initialise to a quaternion identity.
         _orientation  = simd_quaternion(0.0f, 0.0f, 0.0f, 1.0f);
@@ -49,7 +55,8 @@
     return self;
 }
 
-- (void) setPosition:(vector_float3)position {
+- (void)setPosition:(vector_float3)position
+{
     _eye = position;
     [self updateViewMatrix];
 }
@@ -58,9 +65,9 @@
 //  correctly if the angle between the 2 vectors is less than 90 degrees.
 // Returns a rotation quaternion such that q*u = v
 // Tutorial 17 RotationBetweenVectors quaternion_utils.cpp
--(simd_quatf) rotationBetweenVector:(vector_float3)from
-                          andVector:(vector_float3)to {
-
+- (simd_quatf)rotationBetweenVector:(vector_float3)from
+                          andVector:(vector_float3)to
+{
     vector_float3 u = simd_normalize(from);
     vector_float3 v = simd_normalize(to);
 
@@ -86,56 +93,60 @@
 
     // Compute rotation axis which is perpendicular to the plane of u and v.
     rotationAxis = simd_cross(u, v);
+
     // The "rotationAxis" is not a unit vector even though u and v
-    //  are unit vectors.
+    // are unit vectors. It must be normalised.
+
     rotationAxis = simd_normalize(rotationAxis);
     // Normalising the "rotationAxis" and using it to instantiate a
-    //  quaternion will be produce a unit quaternion (magnitude 1.0)
-    //  which is a rotation quaternion.
+    // quaternion will be produce a unit quaternion (magnitude 1.0)
+    // which is a rotation quaternion.
     // Note: there is a "-" sign before the angle.
     simd_quatf q = simd_quaternion(-acosf(cosTheta), rotationAxis);
     return q;
 }
 
 
-
--(void) updateViewMatrix {
+- (void)updateViewMatrix {
     // Metal follows the left hand rule with +z direction into the screen.
     _viewMatrix = matrix_look_at_left_hand(_eye,
                                            _target,
                                            _up);
-    
 }
 
-- (void) update:(float)duration {
+- (void)update:(float)duration
+{
     _orientation = _currentQuat;
     [self updateViewMatrix];
 }
 
 // Handle resize.
-- (void) resizeWithSize:(CGSize)newSize {
+- (void)resizeWithSize:(CGSize)newSize
+{
     _screenSize = newSize;
 }
 
 /*
  Project the mouse coords on to a hemisphere of radius 1.0 units.
- Returns the 3D projected point on a hemisphere.
+ Returns the 3D projected point on the hemisphere.
  */
-- (vector_float3) projectMouseX:(float)x
-                           andY:(float)y {
-    
+- (vector_float3)projectMouseX:(float)x
+                          andY:(float)y
+{
     vector_float3 point = vector_make(x, y, 0);
     float d = x*x + y*y;
     float rr = _sphereRadius * _sphereRadius;
     if(d <= (0.5f * rr)) {
+        //printf("hemisphere\n");
         // Inside the hemisphere. Compute the z-coord using the function:
         //      z = sqrt(r^2 - (x^2 + y^2))
         point.z = sqrtf(rr - d);
     }
     else {
-        // compute z-coord first using the hyperbolic function:
+        // Compute z-coord first using the hyperbolic function:
         //      z = (r^2 / 2) / sqrt(x^2 + y^2)
         // Reference: trackball.c by Gavin Bell at SGI
+        //printf("hyperbola\n");
         point.z = 0.5f * rr / sqrtf(d);
 
     /*
@@ -162,12 +173,15 @@
                 y2 = -y2;
         }
         else {
+            //printf("x != 0\n");
             a = y / x;
             x2 = sqrtf((rr - point.z*point.z) / (1 + a*a));
-            if(x < 0)   // correct sign
+            if(x < 0) {  // correct sign
                 x2 = -x2;
+            }
             y2 = a * x2;
         }
+        // x2, y2 is always >= 0
         point.x = x2;
         point.y = y2;
     }
@@ -176,22 +190,43 @@
 
 // Handle mouse interactions.
 
-// Response to a mouse down.
-- (void) startDraggingFromPoint:(CGPoint)point {
+/*
+ NB. The origin of an iPhone display is at the upper left corner.
+ whereas the origin of a macOS display is at the lower left corner.
+
+ The new origin is at the centre of the display.
+ We must re-map the mouse location (or touch location) wrt the new origin.
+ and the range for both the x-coord and y-coord are [-1.0, 1.0]
+ */
+
+// Response to a mouse down or a UIGestureRecognizerStateBegan
+- (void)startDraggingFromPoint:(CGPoint)point
+{
     self.dragging = YES;
-    // The origin of the view is at the lower bottom corner.
+    // Range of mouseX: [-1.0, 1.0]
     float mouseX = (2*point.x - _screenSize.width)/_screenSize.width;
+#if TARGET_OS_IOS
+    // Invert the y-coordinate
+    // Range of mouseY: [-1.0, 1.0]
+    float mouseY = (_screenSize.height - 2*point.y )/_screenSize.height;
+#else
     float mouseY = (2*point.y - _screenSize.height)/_screenSize.height;
+#endif
     _startPoint = [self projectMouseX:mouseX
                                  andY:mouseY];
-    // save it for the mouse dragged
+    // Save it for the mouse dragged
     _previousQuat = _currentQuat;
 }
 
-// Respond to a mouse dragged
-- (void) dragToPoint:(CGPoint)point {
+// Respond to a mouse dragged or a UIGestureRecognizerStateChanged
+- (void)dragToPoint:(CGPoint)point
+{
     float mouseX = (2*point.x - _screenSize.width)/_screenSize.width;
+#if TARGET_OS_IOS
+    float mouseY = (_screenSize.height - 2*point.y)/_screenSize.height;
+#else
     float mouseY = (2*point.y - _screenSize.height)/_screenSize.height;
+#endif
     _endPoint = [self projectMouseX:mouseX
                                andY:mouseY];
     simd_quatf delta = [self rotationBetweenVector:_startPoint
@@ -199,23 +234,28 @@
     _currentQuat = simd_mul(delta, _previousQuat);
 }
 
-// Response to a mouse up
-- (void) endDrag {
+// Response to a mouse up or a UIGestureRecognizerStateEnded
+- (void)endDrag
+{
     self.dragging = NO;
     _previousQuat = _currentQuat;
     _orientation = _currentQuat;
 }
 
 // Assume only a mouse with 1 scroll wheel.
-- (void) zoomInOrOut:(float)amount {
+- (void)zoomInOrOut:(float)amount
+{
     static float kmouseSensitivity = 0.1;
     vector_float3 pos = _eye;
     // Metal follows the left hand rule with +z direction into the screen.
+    // KIV. mouseSensitivity?
     float z = pos.z + amount*kmouseSensitivity;
-    if (z <= -8.0f)
+    if (z <= -8.0f) {
         z = -8.0f;
-    else if (z >= -3.0f)
+    }
+    else if (z >= -3.0f) {
         z = -3.0f;
+    }
     _eye = vector_make(0.0, 0.0, z);
     self.position = _eye;
 }

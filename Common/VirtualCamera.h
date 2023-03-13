@@ -15,27 +15,26 @@
 
 #import "AAPLMathUtilities.h"
 
-#define kRADIUS_SCALE 0.5
+
 
 @interface VirtualCamera : NSObject
 
-- (nonnull instancetype) initWithScreenSize:(CGSize)size;
+- (nonnull instancetype)initWithScreenSize:(CGSize)size;
 
-- (void) update:(float)duration;
+- (void)update:(float)duration;
 
-- (void) resizeWithSize:(CGSize)newSize;
+- (void)resizeWithSize:(CGSize)newSize;
 
-- (void) startDraggingFromPoint:(CGPoint)point;
+- (void)startDraggingFromPoint:(CGPoint)point;
 
-- (void) dragToPoint:(CGPoint)point;
+- (void)dragToPoint:(CGPoint)point;
 
-- (void) endDrag;
+- (void)endDrag;
 
-- (void) zoomInOrOut:(float)amount;
+- (void)zoomInOrOut:(float)amount;
 
 @property (nonatomic) vector_float3 position;
 @property (nonatomic) matrix_float4x4 viewMatrix;
-@property (nonatomic) vector_float3 eulerAngles;
 @property (nonatomic) simd_quatf orientation;
 @property (nonatomic, getter=isDragging) BOOL dragging;
 
